@@ -1,24 +1,25 @@
 {
-  "name": "topojson-server",
-  "version": "3.0.1",
+  "name": "@dra2020/topojson-server",
+  "version": "3.0.102",
   "description": "Convert GeoJSON to TopoJSON for smaller files and the power of topology!",
   "keywords": [
     "topojson",
     "geojson"
   ],
-  "homepage": "https://github.com/topojson/topojson-server",
+  "homepage": "https://github.com/dra2020/topojson-server",
   "license": "ISC",
   "author": {
     "name": "Mike Bostock",
     "url": "https://bost.ocks.org/mike"
   },
-  "main": "dist/topojson-server.js",
-  "unpkg": "dist/topojson-server.min.js",
-  "jsdelivr": "dist/topojson-server.min.js",
+  "main": "dist/@dra2020/topojson-server.js",
+  "types": "src/index.d.ts",
+  "unpkg": "dist/@dra2020/topojson-server.min.js",
+  "jsdelivr": "dist/@dra2020/topojson-server.min.js",
   "module": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/topojson/topojson-server.git"
+    "url": "https://github.com/dra2020/topojson-server.git"
   },
   "bin": {
     "geo2topo": "bin/geo2topo"
@@ -26,13 +27,12 @@
   "files": [
     "bin/geo*",
     "dist/**/*.js",
-    "src/**/*.js"
+    "src/**/*.js",
+    "src/**/*.ts"
   ],
   "scripts": {
     "pretest": "rollup -c",
-    "test": "tape 'test/**/*-test.js' && eslint src test",
-    "prepublishOnly": "rm -rf dist && yarn test",
-    "postpublish": "git push && git push --tags && zip -j dist/${npm_package_name}.zip -- LICENSE README.md dist/${npm_package_name}.js dist/${npm_package_name}.min.js"
+    "test": "tape 'test/**/*-test.js' && eslint src test"
   },
   "dependencies": {
     "commander": "2"

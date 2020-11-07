@@ -35,7 +35,17 @@ export default function(topology) {
     ring = rings[i];
     if (ring.next) { // arc is no longer closed
       do {
-        dedupLine(ring);
+        // It might actually be closed if I pinched off a loop in a line segment.
+        // Test for this since otherwise merge on resultant topology fails.
+        var s = coordinates[ring[0]];
+        var e = coordinates[ring[1]];
+        if (s[0] === e[0] && s[1] === e[1])
+        {
+          console.log('topology: dedup: ring detected during line processing');
+          dedupRing(ring);
+        }
+        else
+          dedupLine(ring);
       } while (ring = ring.next);
     } else {
       dedupRing(ring);
