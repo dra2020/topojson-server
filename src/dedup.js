@@ -40,10 +40,7 @@ export default function(topology) {
         var s = coordinates[ring[0]];
         var e = coordinates[ring[1]];
         if (s[0] === e[0] && s[1] === e[1])
-        {
-          console.log('topology: dedup: ring detected during line processing');
           dedupRing(ring);
-        }
         else
           dedupLine(ring);
       } while (ring = ring.next);
